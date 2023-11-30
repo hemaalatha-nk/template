@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Data Visualizations</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <script src="https://cdn.tailwindcss.com#.js"></script>
+
+</head>
+<body>
+<!-- and can use default tailwindcss classes -->
+
+    <header>
+        <!-- <h1>Interactive Data Visualizations</h1> -->
+        <h2 class="text-4xl font-bold dark:text-white"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400"> CS424 - Visualization & Visual Analytics (Fall 2023)</span></h2>
+
+        <!-- <h4 class="text-2xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400"> CS424 - Visualization & Visual Analytics (Fall 2023)</span></h4> -->
+        <p class="text-base ml-5 mt-2 font-normal text-gray-500 lg:text-xl dark:text-gray-400"> Team VizMasters</p>
+        
+        <!-- <p class="text-base ...">The quick brown fox ...</p> -->
+        <nav class="relative px-4 py-4 flex justify-between items-center bg-white">
+
+          <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
+            <li><a class="text-sm text-blue-600 font-bold" href="#">Single view visualizations</a></li>
+            <li class="text-gray-300">
+            </li>
+            <li><a href="multipleView.html" class="text-sm text-gray-400 hover:text-gray-500" href="#">Linked view visualizations</a></li>
+            <li class="text-gray-300">
+            
+            </li>
+            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Spatial visualization</a></li>
+            <li class="text-gray-300">
+           
+            </li>
+            
+          </ul>
+           </nav>
+        <div class="navbar-menu relative z-50 hidden">
+          <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+        
+
+      <ul class="flex border-b">
+          <!-- <h2 class="mb-2 mt-0 text-5xl text-black font-medium leading-tight text-primary">
+            CS424 - Visualization & Visual Analytics (Fall 2023)
+          </h2>
+          <h4 class="mb-2 mt-0 text-2xl font-medium leading-tight text-primary">
+            Team VizMasters
+          </h4> -->
+          <!-- <li class="-mb-px mr-1">
+            <a  class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold" href="#">Single view visualizations</a>
+          </li>
+          <li class="mr-1">
+            <a href="multipleView.html" class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#">Linked view visualizations
+            </a>
+          </li>
+          <li class="mr-1">
+            <a href="spatialView.html" class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#">Spatial visualization</a>
+          </li> -->
+       
+        </ul>
+      </div>
+    </header>
+    <main>
+        <!-- Visualization Sections -->
+        <div class="items-center mt-2 w-full space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+         
+          <a href="#" class="w-full sm:w-auto items-center bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex  justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+ 
+              <p>  Attributes being visualized:
+                Year (CRASH_DATE), Number of crashes (CRASH_NUM), Type of chart: Bar graph.
+                </br>
+                Insights from the visualization:
+                The visualization shows that the number of crashes has decreased by 66% over the past decade. This is a positive trend, but it is important to continue to work to reduce the number of crashes even further.</p> 
+           
+            </p> 
+           
+           
+              <div class="visualization" id="vis1"></div>
+                            <div class="text-left rtl:text-right">
+           
+          </div>
+          </a>
+        
+      </div>
+      <div class="items-center mt-2 w-full  space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+         
+        <a href="#" class="w-full sm:w-auto items-center bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex  justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+
+            <p>
+              Attributes being visualized:
+              Year (YEAR), Average number of crashes (COUNT), Weather condition (WEATHER_CONDITION), Type of chart: Line chart.
+            </br>
+          </br>
+              Insights from the visualization:
+              The visualization shows that the average number of crashes varies depending on the weather condition. For example, crashes are more common in rain and snow conditions than in clear or cloudy conditions. The visualization also shows that the average number of crashes has decreased over time, regardless of weather condition.
+            <div class="visualization" id="vis2"></div>
+                          <div class="text-left rtl:text-right">
+         
+        </div>
+        </a>
+      
+    </div>
+    <div class="items-center mt-2  space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+         
+      <a href="#" class="w-full sm:w-auto items-center bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex  justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+
+          <p>Attributes being visualized:
+            Year (YEAR), Road defect (ROAD_DEFECT), Device condition (DEVICE_CONDITION), Number of fatal injuries (INJURIES_FATAL), Type of chart: Scatter plot.
+          </br>
+        </br>
+            Insights from the visualization:
+            The visualization shows that the number of fatal injuries from car crashes varies depending on the road defect and device condition. For example, fatal injuries are more common in crashes involving road defects such as worn surfaces and potholes, and device conditions such as missing or defective signs and signals. The visualization also shows that the number of fatal injuries has decreased over time, regardless of road defect or device condition.</p> 
+       
+       
+          <div class="visualization" id="vis3"></div>
+                        <div class="text-left rtl:text-right">
+       
+      </div>
+      </a>
+    
+  </div>
+  <!-- <div class="items-center mt-2  space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+         
+    <a href="#" class="w-full sm:w-auto items-center bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex  justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+
+        <p> Attributes being visualized:
+        Beat number (beat_num), Number of crashes (crash_count). </p> 
+     
+     
+        <div class="visualization" id="vis4"></div>
+                      <div class="text-left rtl:text-right">
+     
+    </div>
+    </a>
+  
+</div> -->
+
+<div class="items-center mt-2 w-full space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+         
+  <a href="#" class="w-full sm:w-auto items-center bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex  justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+
+      <p> Attributes being visualized:
+        Weather condition (WEATHER_CONDITION), Trafficway type (TRAFFICWAY_TYPE), Number of crashes (INJURIES_TOTAL),
+        
+      </br>
+    </br>
+      
+        
+        Insights from the visualization:
+        The visualization shows that crashes are more common in certain weather conditions and on certain trafficway types. For example, crashes are more common in rain and snow conditions and on divided highways. The visualization also shows that the number of crashes varies depending on the combination of weather condition and trafficway type. For example, there are more crashes in rain and snow conditions on divided highways than there are in clear conditions on local roads.</p>
+
+   
+      <div class="visualization" id="vis5"></div>
+                    <div class="text-left rtl:text-right">
+   
+  </div>
+  </a>
+
+</div>
+      
+
+    
+<div class="visualization" id="vis5"></div>
+      <!-- <div class="visualization" id="vis1"></div> -->
+      <!-- <div class="visualization" id="vis3"></div>
+      <div class="visualization" id="vis5"></div>
+      <div class="visualization" id="vis2"></div>
+      <div class="visualization" id="vis4"></div>
+      <div class="visualization" id="vis6"></div> -->
+        <!-- <section id="vis2" class="visualization"></section>
+        <section id="vis3" class="visualization"></section>
+        <section id="vis5" class="visualization"></section> -->
+        <!-- Add additional visualization sections here -->
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
