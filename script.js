@@ -4,16 +4,16 @@
 // JavaScript for handling the navigation bar
 
 // Get all the links with the class 'navbar'
-const links = document.getElementsByClassName('navbar')[0].getElementsByTagName('a');
+// const links = document.getElementsByClassName('navbar')[0].getElementsByTagName('a');
 
-// Loop through all the links and add an 'active' class to the current/clicked link
-for (let i = 0; i < links.length; i++) {
-  links[i].addEventListener('click', function() {
-    const current = document.getElementsByClassName('active');
-    current[0].className = current[0].className.replace(' active', '');
-    this.className += ' active';
-  });
-}
+// // Loop through all the links and add an 'active' class to the current/clicked link
+// for (let i = 0; i < links.length; i++) {
+//   links[i].addEventListener('click', function() {
+//     const current = document.getElementsByClassName('active');
+//     current[0].className = current[0].className.replace(' active', '');
+//     this.className += ' active';
+//   });
+// }
 
 
 const spec1 = {
@@ -272,7 +272,7 @@ const spec8= {
           // "axis": {"format": "%b"}
         },
         "y": {
-          "title": "Maximum Daily Temperature (C)",
+          // "title": "Maximum Daily Temperature (C)",
           "field": "INJURIES_FATAL",
           "type": "quantitative",
           "aggregate":"mean"
